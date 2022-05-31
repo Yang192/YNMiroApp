@@ -53,7 +53,7 @@ async function getShapeByContent(c)
 
 async function addPuzzleBoard()
 {
-  const items = await PUZZLE_SYSTEM_V2IMG.getChildren({type: 'image'}); //await miro.board.get({type: 'image'});
+  const items = await PUZZLE_SYSTEM_V2IMG.getChildren(); //await miro.board.get({type: 'image'});
 
   if(items.length === 0) return;
 
