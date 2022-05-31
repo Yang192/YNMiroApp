@@ -1,7 +1,17 @@
 //#region Element onclick
 var element = document.getElementById("creat");
+var PUZZLE_SYSTEM_V2IMG;
 element.onclick = function()
 {
+  const frames = await miro.board.get({type: 'frame'});
+  for(var i = 0; i < frames.length; i++)
+  {
+    if(frames[i].title == "PUZZLE_SYSTEM_V2IMG.")
+    {
+      PUZZLE_SYSTEM_V2IMG = frames[i];
+    }
+  }
+
   const return_value = addPuzzleBoard();
 }
 //#endregion
@@ -22,7 +32,8 @@ async function addSticky() {
 //#region getShapeByContent
 async function getShapeByContent(c)
 {
-  const items = await miro.board.get({type: "shape"});
+  
+  const items = miro.board.get({type: "shape"});
 
   for(var i = 0; i < items.length; i++)
   {
@@ -42,7 +53,7 @@ async function getShapeByContent(c)
 
 async function addPuzzleBoard()
 {
-  const items = await miro.board.get({type: 'image'});
+  const items = await PUZZLE_SYSTEM_V2IMG.getChildren({type: 'image'}); //await miro.board.get({type: 'image'});
 
   if(items.length === 0) return;
 
@@ -53,8 +64,8 @@ async function addPuzzleBoard()
     style: {fillColor: '#000000',},
     x: origArea.x + 2500,
     y: origArea.y,
-    width: 2200,
-    height: 2400,
+    width: origArea.width,
+    height: origArea.height,
   });
 
   const offset = {x:origArea.x-newArea.x, y:origArea.y-newArea.y};
