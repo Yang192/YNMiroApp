@@ -7,7 +7,7 @@ async function init() {
     await miro.board.ui.openPanel({url: 'app.html'});
   });
 
-  miro.board.ui.on('selection:update', async (event) =>
+  /*miro.board.ui.on('selection:update', async (event) =>
   {
     const selectedItems = event.items;
 
@@ -22,7 +22,7 @@ async function init() {
         await selectedItem.sync();
       }
     }
-  });
+  });*/
 }
 
 init();

@@ -54,7 +54,7 @@ async function addPuzzleBoard()
     x: origArea.x + 2500,
     y: origArea.y,
     width: 2200,
-    height: 2200,
+    height: 2400,
   });
 
   const offset = {x:origArea.x-newArea.x, y:origArea.y-newArea.y};
