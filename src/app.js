@@ -3,15 +3,6 @@ var element = document.getElementById("creat");
 var PUZZLE_SYSTEM_V2IMG;
 element.onclick = function()
 {
-  const frames = await miro.board.get({type: 'frame'});
-  for(var i = 0; i < frames.length; i++)
-  {
-    if(frames[i].title == "PUZZLE_SYSTEM_V2IMG.")
-    {
-      PUZZLE_SYSTEM_V2IMG = frames[i];
-    }
-  }
-
   const return_value = addPuzzleBoard();
 }
 //#endregion
@@ -53,6 +44,19 @@ async function getShapeByContent(c)
 
 async function addPuzzleBoard()
 {
+  
+if(PUZZLE_SYSTEM_V2IMG === null)
+{
+  const frames = await miro.board.get({type: 'frame'});
+  for(var i = 0; i < frames.length; i++)
+  {
+    if(frames[i].title == "PUZZLE_SYSTEM_V2IMG.")
+    {
+      PUZZLE_SYSTEM_V2IMG = frames[i];
+    }
+  }
+}
+
   const items = await PUZZLE_SYSTEM_V2IMG.getChildren(); //await miro.board.get({type: 'image'});
 
   if(items.length === 0) return;
