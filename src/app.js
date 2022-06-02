@@ -2,42 +2,23 @@
 var v2imgFrame = null;
 var Items_v2imgFrame = null;
 var element = document.getElementById("creat");
+
 element.onclick = function()
 {
-  if(v2imgFrame == null)
+  //現在需要每次重新取得所有物件 (圖片可以經由刪除重新建立，舊物件資訊將會導致圖片url錯誤)。
+  const frame = getItemByTitle("PUZZLE_SYSTEM_V2IMG.", 'frame', function(item)
   {
-    const frame = getItemByTitle("PUZZLE_SYSTEM_V2IMG.", 'frame', function(item)
-    {
-      v2imgFrame = item;
-      
-      const v2img_items = getChildren(v2imgFrame, function(items)
-      {
-        Items_v2imgFrame = items;
-        console.log("Items_v2imgFrame  length: "+ Items_v2imgFrame.length);
-        const return_value = addPuzzleBoard();
-      })       
-    }); 
-  }
-  else
-  {
-    /*const v2img_items = getChildren(v2imgFrame, function(items)
+    v2imgFrame = item;
+    
+    const v2img_items = getChildren(v2imgFrame, function(items)
     {
       Items_v2imgFrame = items;
       console.log("Items_v2imgFrame  length: "+ Items_v2imgFrame.length);
       const return_value = addPuzzleBoard();
-    })   */
-    const return_value = addPuzzleBoard();
-  }
-
-  //while(! hasFrame);
-
-  //const children = await v2imgFrame.getChildren();
-  //console.log("children.length : "+ children.length);
-
-  // Specify all frame items on the board
-
- 
+    })       
+  }); 
 }
+
 //#endregion
 
 async function getItemsInv2imgFrame(type)
